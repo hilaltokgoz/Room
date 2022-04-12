@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.room.BookModel
 import com.room.BookshelfDatabase
+import com.room.R
 import com.room.databinding.FragmentAddBookBinding
 
 
@@ -25,6 +28,24 @@ class AddBookFragment : Fragment() {
     ): View? {
         _binding= FragmentAddBookBinding.inflate(inflater)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+       //sürekli binding yazmak istemediğimiz için apply yazdık.
+        binding.apply {
+            bookAddButton.setOnClickListener{
+                //Yazılan Verileri Alma
+                val bookNameInput= bookNameEditText.text.toString()
+                val authorNameInput=authorNameEditText.text.toString()
+
+                bookshelfDB.bookselfDao().bookAdd(
+                    BookModel(
+                        bookName = bookNameInput,
+                        author = authorNameInput))
+                findNavController().navigate(R.id.action_addBookFragment_to_homePageFragment)
+            }
+        }
 
     }
 }
