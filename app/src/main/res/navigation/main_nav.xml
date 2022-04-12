@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/addBookFragment"
-        android:name="com.room.AddBookFragment"
+        android:name="com.AddBookFragment"
         android:label="fragment_add_book"
         tools:layout="@layout/fragment_add_book" >
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/homePageFragment"
-        android:name="com.room.HomePageFragment"
+        android:name="com.HomePageFragment"
         android:label="fragment_home_page"
         tools:layout="@layout/fragment_home_page" >
         <action
